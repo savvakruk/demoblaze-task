@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress';
 
-export default defineConfig({  
-  
+export default defineConfig({
+
   e2e: {
     supportFile: 'cypress/support/e2e.ts',
     baseUrl: "https://www.demoblaze.com/",

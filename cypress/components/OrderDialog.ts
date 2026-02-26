@@ -56,13 +56,13 @@ export class OrderDialog {
     }
 
     public fillInOrderForm(
-        name: string, 
-        country: string, 
-        city: string, 
-        creditCard: string, 
-        month: string, 
+        name: string,
+        country: string,
+        city: string,
+        creditCard: string,
+        month: string,
         year: string): this {
-            
+
         this.nameInput.click().type(name)
             .should('have.value', name);
 

@@ -1,7 +1,7 @@
 import { OrderDialog } from '../components/OrderDialog';
 import { BasePage } from './BasePage';
 
-export class CartPage extends BasePage { 
+export class CartPage extends BasePage {
 
     public orderDialog: OrderDialog = new OrderDialog();
 

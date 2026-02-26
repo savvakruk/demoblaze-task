@@ -28,18 +28,25 @@ export class SignupDialog {
 
     public signUpWithCredentials(name: string, password: string): this {
         this.usernameInput.click().type(name)
-        .should('have.value', name);
+            .should('have.value', name);
 
         this.passwordInput.click().type(password)
-        .should('have.value', password);
-        
+            .should('have.value', password);
+
         this.loginBtn.click();
         return this;
     }
 
-    public checkAlertWindow(): this {
+    public checkSuccessAlertWindow(): this {
         cy.on('window:alert', (message) => {
             expect(message).to.contains('Sign up successful');
+        });
+        return this;
+    }
+
+    public checkErrorAlertWindow(): this {
+        cy.on('window:alert', (message) => {
+            expect(message).to.contains('This user already exist');
         });
         return this;
     }

@@ -1,6 +1,6 @@
 import { BasePage } from './BasePage';
 
-export class ProductPage extends BasePage { 
+export class ProductPage extends BasePage {
 
     constructor() {
         super('prod.html');
