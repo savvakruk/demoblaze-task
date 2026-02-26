@@ -42,7 +42,7 @@ export class NavigationBar {
         return this;
     }
 
-    public clickOnCartButton(): this {
+    public clickOnCartPageButton(): this {
         this.cartPageBtn.click();
         return this;
     }

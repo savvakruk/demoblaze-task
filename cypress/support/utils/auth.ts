@@ -19,8 +19,8 @@ export function skipLogin(
 
 export function skipSignup(
     testFn: () => void,
-    username = Cypress.env('username'),
-    password = Cypress.env('password')
+    username: string,
+    password: string
 ): () => void {
     return () => {
         cy.request('POST', 'https://api.demoblaze.com/signup', {

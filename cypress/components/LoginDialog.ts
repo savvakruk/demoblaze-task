@@ -1,4 +1,4 @@
-export class LoginDialog { 
+export class LoginDialog {
 
     private get dialog(): Cypress.Chainable {
         return cy.get('#logInModal');
@@ -28,11 +28,11 @@ export class LoginDialog {
 
     public logInWithCredentials(name: string, password: string): this {
         this.usernameInput.click().type(name)
-        .should('have.value', name);
+            .should('have.value', name);
 
         this.passwordInput.click().type(password)
-        .should('have.value', password);
-        
+            .should('have.value', password);
+
         this.loginBtn.click();
         return this;
     }

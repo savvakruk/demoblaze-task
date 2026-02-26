@@ -1,8 +1,16 @@
 {
-  "devDependencies": {
-    "cypress": "^14.5.4"
+  "name": "demoblaze-cypress-tests",
+  "version": "1.0.0",
+  "description": "E2E tests for demoblaze.com using Cypress and TypeScript",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "cypress run",
+    "test:auth": "cypress run --spec 'cypress/e2e/authentication.cy.ts'",
+    "test:purchase": "cypress run --spec 'cypress/e2e/purchase.cy.ts'"
   },
-  "dependencies": {
+  "devDependencies": {
+    "cypress": "^14.5.4",
     "typescript": "^5.9.3"
   }
 }
