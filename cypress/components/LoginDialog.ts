@@ -1,7 +1,10 @@
-import { HomePage } from "../pages/HomePage";
-
 export class LoginDialog { 
-    public get loginTitle(): Cypress.Chainable {
+
+    private get dialog(): Cypress.Chainable {
+        return cy.get('#logInModal');
+    }
+
+    private get loginTitle(): Cypress.Chainable {
         return cy.get('#logInModalLabel');
     }
 
@@ -17,31 +20,20 @@ export class LoginDialog {
         return cy.get('button').contains('Log in');
     }
 
-    private fillUsernameInput(name: string): this {
-        this.usernameInput
-        .should('be.visible')
-        .type(name)
-        .should('have.value', name);
-        return this;
-    }
-
-    private fillPasswordInput(password: string): this {
-        this.passwordInput
-        .should('be.visible')
-        .type(password)
-        .should('have.value', password);
-        return this;
-    }
-
-    private clickLoginBtn(): this {
-        this.loginBtn.click();
+    public checkLoginDialogIsVisible(): this {
+        this.dialog.should('be.visible');
+        this.loginTitle.should('contain.text', 'Log in');
         return this;
     }
 
     public logInWithCredentials(name: string, password: string): this {
-        this.fillUsernameInput(name);
-        this.fillPasswordInput(password);
-        this.clickLoginBtn();
+        this.usernameInput.click().type(name)
+        .should('have.value', name);
+
+        this.passwordInput.click().type(password)
+        .should('have.value', password);
+        
+        this.loginBtn.click();
         return this;
     }
 }

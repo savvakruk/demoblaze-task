@@ -6,7 +6,7 @@ export abstract class BasePage  {
   }
   
   visit(): this {
-    cy.visit(`https://www.demoblaze.com/${this.url}`);
+    cy.visit(`${Cypress.env('baseUrl'),this.url}`);
     return this;
   }
   
@@ -16,7 +16,7 @@ export abstract class BasePage  {
   
   waitForPageLoad(): this {
     cy.get('body').should('be.visible');
-    cy.location('href').should('include', `https://www.demoblaze.com/${this.url}`);
+    cy.location('href').should('include', `${Cypress.env('baseUrl'),this.url}`);
     return this;
   }
 }

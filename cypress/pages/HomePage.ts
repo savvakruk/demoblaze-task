@@ -1,16 +1,43 @@
 import { BasePage } from './BasePage';
-import { NavigationBar } from '../components/NavigationBar';
 
-export class HomePage extends BasePage{ 
-
-    public navigationBar: NavigationBar = new NavigationBar();
+export class HomePage extends BasePage { 
 
     constructor() {
         super('index.html');
     }
 
-    public get productsContainer(): Cypress.Chainable {
-        return cy.get('#contcont');
+    private get productsItemList(): Cypress.Chainable {
+        return cy.get('#tbodyid');
+    }
+
+    private listCategoriesContainer: string = '.list-group';
+
+    private get categoryButton(): Cypress.Chainable {
+        return cy.get(`${this.listCategoriesContainer} [id="itemc"]`);
+    }
+
+    public clickOnLaptopsCategoryButton(): this {
+        this.categoryButton
+            .should('be.visible')
+            .contains('Laptops')
+            .click();
+        return this;
+    }
+
+    public clickOnPhonesCategoryButton(): this {
+        this.categoryButton
+            .should('be.visible')
+            .contains('Phones')
+            .click();
+        return this;
+    }
+
+    public clickOnProductItem(name: string): this {
+        this.productsItemList
+            .should('be.visible')
+            .contains(name)
+            .click();
+        return this;
     }
 }
 

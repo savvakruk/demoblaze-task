@@ -1,12 +1,12 @@
-// import { CartPage } from '../pages/CartPage';
+import { CartPage } from '../pages/CartPage';
 import { HomePage } from '../pages/HomePage';
 import { LoginDialog } from './LoginDialog';
 import { SignupDialog } from './SignupDialog';
 
 export class NavigationBar {
 
-    public loginDialog: LoginDialog = new LoginDialog();
-    public signupDialog: SignupDialog = new SignupDialog();
+    public loginDialog = new LoginDialog();
+    public signupDialog = new SignupDialog();
 
     private get loginBtn(): Cypress.Chainable {
         return cy.get('#login2');
@@ -42,14 +42,14 @@ export class NavigationBar {
         return this;
     }
 
-    // public clickOnCartButton(): CartPage {
-    //     this.cartPageBtn.click();
-    //     return new CartPage();
-    // }
+    public clickOnCartButton(): this {
+        this.cartPageBtn.click();
+        return this;
+    }
 
-    public clickOnHomePageButton(): HomePage {
+    public clickOnHomePageButton(): this {
         this.homePageBtn.click();
-        return new HomePage();
+        return this;
     }
 
     public checkUserName(userName: string): this {
@@ -62,7 +62,7 @@ export class NavigationBar {
         return this;
     }
 
-    public checkLogInButton(): this {
+    public checkLogInButtonText(): this {
         this.loginBtn.should('have.text', 'Log in');
         return this;
     }
