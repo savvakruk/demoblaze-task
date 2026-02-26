@@ -11,14 +11,15 @@ describe('Purchase products flow tests spec', () => {
 
     it('Add laptop to cart and complete order', skipSignup(() => {
         const homePage = new HomePage();
-
+        const productPage = new ProductPage();
+        const navigationBar = new NavigationBar();
+        const cartPage = new CartPage();
+        
         homePage
             .visit()
             .waitForPageLoad()
             .clickOnLaptopsCategoryButton()
             .clickOnProductItem('Sony vaio i5');
-
-        const productPage = new ProductPage();
 
         productPage
             .waitForPageLoad()
@@ -26,12 +27,8 @@ describe('Purchase products flow tests spec', () => {
             .clickAddToCardButton()
             .checkAlertWindow();
 
-        const navigationBar = new NavigationBar();
-
         navigationBar
             .clickOnCartPageButton();
-
-        const cartPage = new CartPage();
 
         cartPage
             .waitForPageLoad()
@@ -91,5 +88,5 @@ describe('Purchase products flow tests spec', () => {
             .shouldHaveProductCount(0);
 
     }, name, password));
-    
+
 });
